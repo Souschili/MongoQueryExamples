@@ -4,7 +4,7 @@ namespace MongoQueryExamples.Mongo
 {
     class ApplicationContext
     {
-        IMongoCollection<object> PersonCollection { get; set; }
+        public IMongoCollection<object> PersonCollection { get; set; }
 
         public ApplicationContext()
         {
