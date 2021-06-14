@@ -34,6 +34,11 @@ namespace MongoQueryExamples
             Console.ReadLine();
         }
 
+        static public void FindAllCollection(ICollection<object> persons)
+        {
+
+        }
+
 
         static void Main(string[] args)
         {
@@ -48,11 +53,19 @@ namespace MongoQueryExamples
 
             // Тут мы работаем с курсором (итератором)
             IAsyncCursor<object> getAllCursor = context.PersonCollection.Find(_ => true).ToCursor();
+
+            //используем Ling to Mongo
+            var getAllLing = context.PersonCollection.AsQueryable<object>().ToList();
+            foreach (var item in getAllLing)
+            {
+                Console.WriteLine(item.ToBsonDocument());
+            }
+            Console.ReadLine();
             // расскоментируй и запусти
-            FindAllCursor(getAllCursor);
+            //FindAllCursor(getAllCursor);
             
 
-            Console.WriteLine("Hello World!");
+           
         }
     }
 }
